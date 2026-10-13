@@ -1,0 +1,11 @@
+node_modules/
+*.db
+*.db-journal
+*.db-wal
+data/
+dist/
+tools/voice/.venv/
+tools/voice/models/
+tools/voice/hf-cache/
+tools/voice/cache/
+tools/voice/setup.log
