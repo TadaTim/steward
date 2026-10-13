@@ -1,0 +1,1 @@
+{"name": "@steward/evals", "version": "0.1.0", "type": "module", "main": "src/run.ts", "exports": {".": "./src/run.ts"}, "dependencies": {"@steward/contracts": "*", "@steward/vault": "*", "@steward/core": "*", "@steward/intent": "*", "@steward/agents": "*", "@steward/ledger": "*", "@steward/onboarding": "*", "@steward/voice": "*"}}
