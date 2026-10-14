@@ -16,6 +16,22 @@ The test for any future feature: does it deepen the accounting, or deepen the ow
 
 ---
 
+## Install the easy way
+
+You do not need to know anything technical, and you never have to type a command yourself — the installer opens whatever it needs and talks in plain sentences the whole way.
+
+1. Download this project as a ZIP (on GitHub: the green **Code** button → **Download ZIP**) and unzip it anywhere you like.
+2. Double-click the installer for your computer:
+   - **Windows:** `Install-Steward.bat`
+   - **Mac:** `install-steward-mac.command`
+   - **Linux:** `install-steward.sh` (double-click it if your file manager offers to run programs, or open it from a terminal)
+3. Follow the messages. Steward needs one free program underneath it (Node.js, version 22 or newer). If it is missing, the Windows installer can fetch it with your permission, and the Mac installer can use Homebrew if you already have it; otherwise the installer simply tells you, in plain words, where to get it and how to pick up where you left off.
+4. When it finishes, Steward opens in your web browser. From then on, the **Steward** shortcut on your desktop starts it — Steward is running while its window is open, and closing the window stops it. The installer also asks, once, whether Steward should start by itself each time you log on; saying no is always fine, and it can be undone (on Windows, `Uninstall-Steward.bat` removes the shortcuts).
+
+Everything Steward remembers lives in the `data` folder inside this folder. It stays on this computer and it belongs to the owner — removing shortcuts never touches it. Running the installer again is safe: it freshens the setup and keeps all of your information.
+
+**Verification, stated plainly.** The Windows and Mac installers were written with care and inspected line by line, but they have **not been run on Windows or macOS** — the build environment for this project is a Linux machine, so no honest claim of a tested Windows or Mac install can be made yet. The Linux installer's non-destructive steps (checking for Node.js, installing Steward's parts, creating the launcher and the `data` folder, declining and accepting automatic start) **were** exercised in a throwaway copy on Linux, and the launcher it generated was started and answered a real web request. The Mac installer's script was likewise run end-to-end under Linux's bash (its generated launcher and login plist were produced and validated) — but that is not macOS, and the Windows batch files, which cannot run here at all, were inspected line by line instead. The first Windows and Mac installs should be treated as field tests: if an installer stops with a message, that message text is exactly what to report.
+
 ## Run it
 
 ```bash
@@ -169,6 +185,9 @@ Scenario list: golden research, golden ops, receipt completeness, adversarial su
 | Kokoro + Piper rendering; audition samples (18 WAVs) | **Executed** — real audio produced here |
 | faster-whisper round-trip intelligibility | **Executed** — real numbers in the scorecard |
 | Vault-corruption recovery, crash drill, trace-chain drill | **Executed** |
+| One-click installer (Linux) | **Exercised** in a throwaway copy — Node check, `npm install`, launcher + `data` generation, autostart both ways; generated launcher booted and served HTTP |
+| One-click installer (Mac) | **Script executed end-to-end under Linux bash** (launcher + login plist generated and validated) — **not on macOS** |
+| One-click installer (Windows) | **Written; inspected line by line — NOT executed** (no Windows in the build environment) |
 | CI workflow | **Written, YAML-validated locally; not run on GitHub** (no repo push in scope) |
 | Web Speech API recognition in a live browser | **Written; NOT verifiable headlessly — not claimed** |
 | Swipe gestures on a physical phone | **Written (pointer events); verified only as served markup/logic** |
